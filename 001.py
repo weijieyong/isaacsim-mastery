@@ -17,6 +17,14 @@ simulation_app = SimulationApp(launch_config=app_config)
 from isaacsim.core.utils.extensions import enable_extension
 enable_extension("omni.kit.livestream.webrtc")
 
+#------------------------------------
+
+# add World (inherits from SimulationContext)
+# more details: 
+# https://docs.isaacsim.omniverse.nvidia.com/latest/py/source/extensions/isaacsim.core.api/docs/index.html#isaacsim.core.api.world.World
+from isaacsim.core.api import World
+world = World(stage_units_in_meters=1.0)
+world.scene.add_default_ground_plane()
 
 # keep it running
 while simulation_app._app.is_running() and not simulation_app.is_exiting():
