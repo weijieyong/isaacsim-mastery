@@ -105,14 +105,37 @@ physxSceneAPI.CreateBroadphaseTypeAttr("MBP")
 physxSceneAPI.CreateSolverTypeAttr("TGS")
 
 #-----------------------------
+from isaacsim.core.prims import Articulation
+arm = Articulation(prim_paths_expr="/ur10", name="my_ur10")
 
+world.reset()
 
+from isaacsim.core.utils.types import ArticulationActions
 
+# Define three joint positions to cycle through
+positions = [
+    [[-1.5, -0.5, -0.7, -1.5, -0.8, 1.5]],
+    [[0.0, -0.8, 0.0, 0.0, 0.0, 0.0]],
+    [[1.2, -1.0, 0.5, -1.0, 0.5, -1.2]],
+]
+
+state = 0
+num_states = len(positions)
+
+while simulation_app._app.is_running() and not simulation_app.is_exiting():
+    print(f"Moving to position {state + 1}")
+    action = ArticulationActions(joint_positions=positions[state])
+    arm.apply_action(action)
+
+    for _ in range(120):
+        world.step(render=True)
+
+    state = (state + 1) % num_states
 
 #----------------------
 # keep it running
-while simulation_app._app.is_running() and not simulation_app.is_exiting():
-    # Run in realtime mode, we don't specify the step size
-    simulation_app.update()
+# while simulation_app._app.is_running() and not simulation_app.is_exiting():
+#     # Run in realtime mode, we don't specify the step size
+#     simulation_app.update()
 
 simulation_app.close()  # Cleanup application
