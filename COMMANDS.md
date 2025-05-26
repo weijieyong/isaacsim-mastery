@@ -20,7 +20,30 @@ docker run --name isaac-sim-4_5 \
     
 ---
 
+## Configuring Isaac Sim to Use Local Assets
+https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/install_faq.html 
+Edit the /home/<username>/isaacsim/apps/isaacsim.exp.base.kit file and add the settings below:
 
+apps/isaacsim.exp.full.streaming.kit
+
+[settings]
+persistent.isaac.asset_root.default = "/isaac-sim/isaacsim_assets/Assets/Isaac/4.5"
+exts."isaacsim.asset.browser".folders = [
+    "/isaac-sim/isaacsim_assets/Assets/Isaac/4.5/Isaac/Robots",
+    "/isaac-sim/isaacsim_assets/Assets/Isaac/4.5/Isaac/People",
+    "/isaac-sim/isaacsim_assets/Assets/Isaac/4.5/Isaac/IsaacLab",
+    "/isaac-sim/isaacsim_assets/Assets/Isaac/4.5/Isaac/Props",
+    "/isaac-sim/isaacsim_assets/Assets/Isaac/4.5/Isaac/Environments",
+    "/isaac-sim/isaacsim_assets/Assets/Isaac/4.5/Isaac/Materials",
+    "/isaac-sim/isaacsim_assets/Assets/Isaac/4.5/Isaac/Samples",
+    "/isaac-sim/isaacsim_assets/Assets/Isaac/4.5/Isaac/Sensors",
+]
+
+or
+
+./runheadless.sh --/persistent/isaac/asset_root/default="/isaac-sim/isaacsim_assets/Assets/Isaac/4.5"
+
+./isaac-sim.sh --/persistent/isaac/asset_root/default="/isaac-sim/isaacsim_assets/Assets/Isaac/4.5"
 
 
 
