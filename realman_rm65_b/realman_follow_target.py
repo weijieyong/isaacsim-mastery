@@ -204,8 +204,8 @@ def main():
     
     # Motion controller setup
     config_paths = (
-        "/isaac-sim/my_examples/realman_rm65_b/assets/rm_65_b/rmpflow/rm65_robot_description.yaml",
-        "/isaac-sim/my_examples/realman_rm65_b/assets/rm_65_b/rmpflow/rm65_rmpflow_config.yaml",
+        "/isaac-sim/my_examples/realman_rm65_b/rmpflow/rm65_robot_descriptor.yaml",
+        "/isaac-sim/my_examples/realman_rm65_b/rmpflow/rm65_rmpflow_common.yaml",
         "/isaac-sim/my_examples/realman_rm65_b/assets/rm_65_b/robot.urdf"
     )
     
