@@ -1,0 +1,33 @@
+services:
+  isaac-sim-4_5:
+    image: nvcr.io/nvidia/isaac-sim:4.5.0
+    container_name: isaac-sim-4_5
+    entrypoint: bash
+    tty: true
+    stdin_open: true
+    network_mode: host
+    environment:
+      - ACCEPT_EULA=Y
+      - PRIVACY_CONSENT=Y
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+      - ~/weijie/isaacsim-4-5/docker/isaac-sim/cache/kit:/isaac-sim/kit/cache:rw
+      - ~/weijie/isaacsim-4-5/docker/isaac-sim/cache/ov:/root/.cache/ov:rw
+      - ~/weijie/isaacsim-4-5/docker/isaac-sim/cache/pip:/root/.cache/pip:rw
+      - ~/weijie/isaacsim-4-5/docker/isaac-sim/cache/glcache:/root/.cache/nvidia/GLCache:rw
+      - ~/weijie/isaacsim-4-5/docker/isaac-sim/cache/computecache:/root/.nv/ComputeCache:rw
+      - ~/weijie/isaacsim-4-5/docker/isaac-sim/logs:/root/.nvidia-omniverse/logs:rw
+      - ~/weijie/isaacsim-4-5/docker/isaac-sim/data:/root/.local/share/ov/data:rw
+      - ~/weijie/isaacsim-4-5/docker/isaac-sim/documents:/root/Documents:rw
+      - ~/weijie/isaacsim-4-5/my_examples:/isaac-sim/my_examples:rw
+      - ~/weijie/isaacsim-4-5/isaacsim_assets_4-5:/isaac-sim/isaacsim_assets:rw
+      - ~/weijie/isaacsim-4-5/isaacsim-app-configs:/isaac-sim/apps:rw 
+    # Optional: Remove the container after exit, like --rm
+    restart: "no"
