@@ -2,7 +2,7 @@ services:
   isaac-sim-4_5:
     image: nvcr.io/nvidia/isaac-sim:4.5.0
     container_name: isaac-sim-4_5
-    entrypoint: bash
+    entrypoint: ["/bin/bash"]
     tty: true
     stdin_open: true
     network_mode: host
@@ -26,8 +26,11 @@ services:
       - ~/weijie/isaacsim-4-5/docker/isaac-sim/logs:/root/.nvidia-omniverse/logs:rw
       - ~/weijie/isaacsim-4-5/docker/isaac-sim/data:/root/.local/share/ov/data:rw
       - ~/weijie/isaacsim-4-5/docker/isaac-sim/documents:/root/Documents:rw
-      - ~/weijie/isaacsim-4-5/my_examples:/isaac-sim/my_examples:rw
+      # - ~/weijie/isaacsim-4-5/my_examples:/isaac-sim/my_examples:rw
       - ~/weijie/isaacsim-4-5/isaacsim_assets_4-5:/isaac-sim/isaacsim_assets:rw
-      - ~/weijie/isaacsim-4-5/isaacsim-app-configs:/isaac-sim/apps:rw 
-    # Optional: Remove the container after exit, like --rm
+      - ./isaacsim-app-configs:/isaac-sim/apps:rw
+      - ./realman_rm65_b:/isaac-sim/realman_rm65_b:rw
+      - ./ur10e:/isaac-sim/ur10e:rw
+      - ./my_Isaac:/isaac-sim/my_Isaac:rw
+      - ./standalone_examples_4-5:/isaac-sim/my_examples:rw
     restart: "no"
