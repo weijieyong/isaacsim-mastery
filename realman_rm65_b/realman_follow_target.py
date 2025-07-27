@@ -177,7 +177,7 @@ def main():
     stage = load_robot_asset(my_world, asset_path, robot_prim_path)
     
     # Configure robot position and orientation
-    robot_position = (0, 0.05, 0.1)
+    robot_position = (0, 0.05, 0.4)
     robot_rotation = (0.0, -45.0, 0.0)
     configure_robot_transform(stage, robot_prim_path, robot_position, robot_rotation)
     
@@ -188,8 +188,8 @@ def main():
     )
     
     # Create target cube for robot to follow
-    target_position = np.array([-0.45, 0.15, 0.38])
-    target_orientation = euler_angles_to_quat(np.array([-np.pi, 0, np.pi]))
+    target_position = np.array([-0.4, 0.05, 0.66])
+    target_orientation = euler_angles_to_quat(np.array([-np.pi, 0, 0]))
     target_name = "target_cube"
     target_prim_path = "/World/target_cube"
     
