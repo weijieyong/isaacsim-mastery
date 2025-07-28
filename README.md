@@ -2,6 +2,9 @@
 
 A collection of Isaac Sim examples and robotics simulations using Docker containers.
 
+> [!IMPORTANT]
+> This repository is tailored for a specific workflow: developing on a Windows laptop, connecting via SSH to a shared GPU-enabled PC, running Isaac Sim inside a Docker container, and streaming the GUI using the Isaac Sim WebRTC Streaming Client.
+
 ## Setup
 
 ### Asset Configuration (Optional)
@@ -12,7 +15,8 @@ Assets can be downloaded locally and mounted for faster access:
 ~/weijie/isaacsim-4-5/isaacsim_assets_4-5:/isaac-sim/isaacsim_assets:rw
 ```
 
-**Note:** This step can be skipped as assets should download directly from Nucleus.
+> [!NOTE]
+> This step can be skipped as should be automatically fetched from the NVIDIA asset cloud by default
 
 ### Prerequisites
 
